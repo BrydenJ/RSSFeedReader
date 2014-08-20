@@ -1,0 +1,40 @@
+﻿@model RSSFeeds.Models.RSSFeed
+@{
+    ViewBag.Title = "Add a new RSS Feed to the Feed List";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>@ViewBag.Title</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RSSFeedTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RSSFeedTitle)
+            @Html.ValidationMessageFor(model => model.RSSFeedTitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RSSFeedUrl)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RSSFeedUrl)
+            @Html.ValidationMessageFor(model => model.RSSFeedUrl)
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    <b>
+        @Html.ActionLink("Back to Feed List", "List")
+    </b>
+</div>

@@ -1,0 +1,38 @@
+﻿@model RSSFeeds.Models.RSSFeedItem
+
+<fieldset>
+    <legend>RSSFeedItem</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Summary)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Summary)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RSSFeedUrl)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RSSFeedUrl)
+    </div>
+</fieldset>
+<p>
+    <b>
+        @Html.ActionLink("Back to List", "List", new {rssFeedUrl = Model.RSSFeedUrl})
+    </b>
+</p>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RSSFeeds.Models.RSSFeedItem>
+@{
+    ViewBag.Title = "RSS Feed List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>Mark Read/Unread</th>
+    </tr>
+    
+    @foreach (var item in Model) {
+        var itemCssClass = item.Read ? "UnreadItem" : "ReadItem";
+        <tr>
+            <td>
+                @Html.ActionLink(item.Title, "Detail", new {rssFeedUrl = item.RSSFeedUrl, rssFeedItemId =item.RSSFeedItemId }, new { @class = itemCssClass})
+            </td>
+            <td>
+                @Html.ActionLink((item.Read ? "Unread" : "Read"), "UpdateFeedReadStatus", new { rssFeedItemId =item.RSSFeedItemId, rssFeedUrl = item.RSSFeedUrl, read = !item.Read }, new { @class = itemCssClass })
+            </td>
+        </tr>
+    }
+    
+</table>
+
+<br/>
+<div>
+    <b>
+        @Html.ActionLink("Back to Feed List", "List", "RSSFeed")
+    </b>
+</div>
